@@ -22,7 +22,7 @@ ASM_SRCS	:= $(shell find $(SRC_DIR) -type f -name '*.asm')
 C_SRCS		:= $(shell find $(SRC_DIR) -type f -name '*.c')
 
 # Convert sources/xxx/foo.asm -> objs/xxx/foo.o
-ASM_OBJS	:= $(patsubst $(SRC_DIR)/%.asm,$(OBJ_DIR)/%.o,$(ASM_SRCS))
+ASM_OBJS	:= $(patsubst $(SRC_DIR)/%.asm,$(OBJ_DIR)/%.asm.o,$(ASM_SRCS))
 C_OBJS		:= $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(C_SRCS))
 
 OBJS		:= $(ASM_OBJS) $(C_OBJS)
@@ -43,7 +43,7 @@ $(NAME): $(OBJS)
 # ASM compilation
 # --------------------------------------------------
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.asm
+$(OBJ_DIR)/%.asm.o: $(SRC_DIR)/%.asm
 	@mkdir -p $(dir $@)
 	$(NASM) $(NASMFLAGS) $< -o $@
 
