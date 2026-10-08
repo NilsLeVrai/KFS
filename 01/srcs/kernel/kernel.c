@@ -8,9 +8,8 @@ void init_term() {
 void kernel_main(void) {
 	isr_install();
 	init_term();
-	int i = 0;
-	int j = 0;
-	int lol = i / j;
+	// asm volatile ("int $01");
+
 	uint32_t offset = print_str_at("eulmanOS >> ", 0, 0, (vga_color_t)MAGENTA, (vga_color_t)GREEN);
 	set_cursor(offset * 2);
 }

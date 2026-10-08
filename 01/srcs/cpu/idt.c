@@ -1,15 +1,15 @@
 #include "idt.h"
 #include "isr.h"
 
-idt_gate_t		idt[256] = {0};
+idt_gate_t		idt[256];
 idt_register_t	idt_reg;
 
-void	set_idt_gate() {
-	idt[0].low_offset = (uint16_t)((uint32_t)&isr8 & 0xffff);
-	idt[0].selector = 0x08;
-	idt[0].always0 = 0;
-	idt[0].flags = 0x8E;
-	idt[0].high_offset = (uint16_t)((uint32_t)&isr8 >> 16);
+void	set_idt_gate(int n, uint32_t handler) {
+	idt[n].low_offset = (uint16_t)(handler & 0xffff);
+	idt[n].selector = 0x08;
+	idt[n].always0 = 0;
+	idt[n].flags = 0x8E;
+	idt[n].high_offset = (uint16_t)((handler >> 16) & 0xffff);
 }
 
 void	load_idt() {

@@ -1,7 +1,7 @@
 ; Declare constants for the multiboot header.
-MBALIGN  equ  1 << 0            ; align loaded modules on page boundaries
-MEMINFO  equ  1 << 1            ; provide memory map
-MBFLAGS  equ  MBALIGN | MEMINFO ; this is the Multiboot 'flag' field
+MBALIGN  equ  0           ; align loaded modules on page boundaries
+MEMINFO  equ  1            ; provide memory map
+MBFLAGS  equ  1 ; this is the Multiboot 'flag' field
 MAGIC    equ  0x1BADB002        ; 'magic number' lets bootloader find the header
 CHECKSUM equ -(MAGIC + MBFLAGS) ; checksum of above, to prove we are multiboot
                                 ; CHECKSUM + MAGIC + MBFLAGS should be Zero (0)

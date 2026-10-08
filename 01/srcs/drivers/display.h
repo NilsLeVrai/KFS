@@ -28,9 +28,6 @@ typedef enum __attribute__ ((__packed__)) e_vga_color {
 	WHITE = 15
 } vga_color_t;
 
-unsigned char port_byte_in(unsigned short port);
-void port_byte_out(unsigned short port, unsigned char data);
-
 void set_cursor(int offset);
 int get_cursor();
 static inline uint8_t create_vga_color(uint8_t fg, uint8_t bg);
