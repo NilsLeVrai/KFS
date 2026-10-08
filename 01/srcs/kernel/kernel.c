@@ -1,11 +1,13 @@
 #include "../drivers/display.h"
 #include "../cpu/isr.h"
+#include "./gdt.h"
 
 void init_term() {
 	clear_term();
 }
 
 void kernel_main(void) {
+	setup_gdt();
 	isr_install();
 	init_term();
 	// asm volatile ("int $01");
