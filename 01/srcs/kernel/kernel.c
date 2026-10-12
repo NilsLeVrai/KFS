@@ -1,17 +1,29 @@
 #include "../drivers/display.h"
 #include "../cpu/isr.h"
 #include "./gdt.h"
+#include "../shell/shell.h"
+#include "../drivers/ports.h"
+#include "../drivers/keyboard.h"
 
 void init_term() {
 	clear_term();
 }
 
-void kernel_main(void) {
+void user_test() {
+}
+
+void kernel_main() {
 	setup_gdt();
 	isr_install();
-	init_term();
-	asm volatile ("int $00");
+	while (port_byte_in(0x64) & 1)
+		port_byte_in(0x60);
+	asm volatile("sti");
+	keyboard_init();
 
-	// uint32_t offset = print_str_at("eulmanOS >> ", 0, 0, (vga_color_t)MAGENTA, (vga_color_t)GREEN);
-	// set_cursor(offset * 2);
+	init_term();
+	init_shell();
+	// asm volatile ("int $00");
+	// switch_to_user_mode();
+
+	for (;;) asm volatile("hlt");
 }

@@ -1,7 +1,11 @@
 #pragma once
-#include "../../includes/stdint.h"
+#include "../utils/stdint.h"
+
+#define GDT_BASE_ADDR 0x00000800
+#define MEMORY_LIMIT_10MB 0x00A00
 
 extern void activate_segments();
+extern void	switch_to_user_mode();
 
 struct gdt_entry {
     uint16_t limit_low;

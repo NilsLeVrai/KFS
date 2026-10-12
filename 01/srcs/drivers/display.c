@@ -1,7 +1,8 @@
 #include "display.h"
 #include "ports.h"
 
-uint16_t *vga_adr_ptr = (uint16_t *)VGA_ADRESS;
+uint16_t		*vga_adr_ptr = (uint16_t *)VGA_ADRESS;
+cursor_pos_t	cursor_pos = {0, 0};
 
 void set_cursor(int offset) {
     offset /= 2;
@@ -64,4 +65,11 @@ uint32_t	print_str_at(char* str, uint32_t x, uint32_t y, uint8_t fg, uint8_t bg)
 		str++;
 	}
 	return (VGA_COL * newline_count) + xoffset - 1;
+}
+
+void	kputchar(char c, uint8_t fg, uint8_t bg) {
+}
+
+void	kputstr(char c, uint8_t fg, uint8_t bg) {
+
 }

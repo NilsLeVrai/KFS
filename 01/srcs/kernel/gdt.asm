@@ -14,6 +14,7 @@ activate_segments:
     ret
 
 ; global switch_to_user_mode
+; extern user_test
 ; switch_to_user_mode:
 ;     cli                 ; Désactive les interruptions pendant la transition
 ;
@@ -31,7 +32,7 @@ activate_segments:
 ;     push 0x1B
 ;
 ;     ; 4. Pousser l'adresse de la fonction utilisateur à exécuter (EIP)
-;     push user_function_address
+;     push user_test
 ;
 ;     ; 5. Charger les registres de données avec le segment Utilisateur (0x23)
 ;     mov ax, 0x23
@@ -41,4 +42,24 @@ activate_segments:
 ;     mov gs, ax
 ;
 ;     ; 6. Execution magique du saut de privilège
+;     iretd
+
+; global switch_to_user_mode
+; switch_to_user_mode:
+;     cli
+;     mov ebx, [esp+4]    ; entry (EIP utilisateur)
+;     mov ecx, [esp+8]    ; sommet de la pile utilisateur
+;
+;     mov ax, 0x23
+;     mov ds, ax
+;     mov es, ax
+;     mov fs, ax
+;     mov gs, ax
+;
+;     push 0x23           ; SS
+;     push ecx            ; ESP utilisateur
+;     pushfd
+;     or dword [esp], 0x200
+;     push 0x1B           ; CS
+;     push ebx            ; EIP
 ;     iretd

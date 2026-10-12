@@ -1,12 +1,6 @@
 #include "./gdt.h"
 
-struct gdt_entry gdt[5];
-/* 	◦ Kernel Code
-	◦ Kernel Data
-	◦ Kernel stack
-	◦ User code
-	◦ User data
-	◦ User stack	*/
+struct gdt_entry* gdt = (struct gdt_entry*)GDT_BASE_ADDR;
 
 struct gdt_ptr gp;
 
@@ -50,23 +44,30 @@ void gdt_flush() {
 }
 
 void setup_gdt() {
-    // 0x00 : Null Descriptor
+    // 1. Entrée 0 : Null Descriptor
     init_gdt_entry(0, 0, 0, 0, 0);
 
-    // 0x08 : Code Kernel (Index 1 -> 1 * 8 = 0x08)
+    // 2. Entrée 1 (0x08) : Kernel Code (4 Go exécutable)
     init_gdt_entry(1, 0, 0xFFFFFFFF, 0x9A, 0xCF);
 
-    // 0x10 : Données Kernel (Index 2 -> 2 * 8 = 0x10)
-    init_gdt_entry(2, 0, 0xFFFFFFFF, 0x92, 0xCF);
+    // 3. Entrée 2 (0x10) : Kernel Data (Limité à 10 Mo)
+    init_gdt_entry(2, 0, MEMORY_LIMIT_10MB, 0x92, 0xCF);
 
-    // 0x18 : Code Utilisateur (Index 3 -> 3 * 8 = 0x18 | Privilège 3 = 0x1B)
-    init_gdt_entry(3, 0, 0xFFFFFFFF, 0xFA, 0xCF);
+    // 4. Entrée 3 (0x18) : Kernel Stack (Dédié, Ring 0, Limité à 10 Mo)
+    init_gdt_entry(3, 0, MEMORY_LIMIT_10MB, 0x92, 0xCF);
 
-    // 0x20 : Données Utilisateur (Index 4 -> 4 * 8 = 0x20 | Privilège 3 = 0x23)
-    init_gdt_entry(4, 0, 0xFFFFFFFF, 0xF2, 0xCF);
+    // 5. Entrée 4 (0x20) : User Code (4 Go exécutable, Ring 3)
+    init_gdt_entry(4, 0, 0xFFFFFFFF, 0xFA, 0xCF);
 
-    gp.limit = (sizeof(struct gdt_entry) * 5) - 1;
-    gp.base  = (unsigned int)&gdt;
+    // 6. Entrée 5 (0x28) : User Data (Limité à 10 Mo, Ring 3)
+    init_gdt_entry(5, 0, MEMORY_LIMIT_10MB, 0xF2, 0xCF);
+
+    // 7. Entrée 6 (0x30) : User Stack (Dédié, Ring 3, Limité à 10 Mo)
+    init_gdt_entry(6, 0, MEMORY_LIMIT_10MB, 0xF2, 0xCF);
+
+
+    gp.limit = (sizeof(struct gdt_entry) * 7) - 1;
+    gp.base  = GDT_BASE_ADDR;
 
     gdt_flush();
     activate_segments();

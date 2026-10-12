@@ -1,4 +1,5 @@
-#include "../../includes/stdint.h"
+#pragma once
+#include "../utils/stdint.h"
 
 typedef struct {
     uint32_t	ds; /* Data segment selector */
@@ -124,5 +125,6 @@ extern void irq15();
 
 void	isr_install();
 void	isr_handler(registers_t* registers);
+void	irq_handler(registers_t* registers);
 typedef void (*isr_t)(registers_t*);
 void	register_interrupt_handler(uint8_t n, isr_t handler);

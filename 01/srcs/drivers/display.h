@@ -1,5 +1,5 @@
 #pragma once
-#include "../../includes/stdint.h"
+#include "../utils/stdint.h"
 
 #define VGA_ADRESS 0xB8000
 #define VGA_ROW 25
@@ -28,6 +28,11 @@ typedef enum __attribute__ ((__packed__)) e_vga_color {
 	WHITE = 15
 } vga_color_t;
 
+typedef struct cursor_pos_s {
+	uint32_t x;
+	uint32_t y;
+} cursor_pos_t;
+
 void set_cursor(int offset);
 int get_cursor();
 static inline uint8_t create_vga_color(uint8_t fg, uint8_t bg);
@@ -35,3 +40,4 @@ static inline uint16_t create_vga_char(uint8_t c, uint8_t color);
 void clear_term();
 void	print_char_at(uint8_t c, uint32_t x, uint32_t y, uint8_t fg, uint8_t bg);
 uint32_t	print_str_at(char* str, uint32_t x, uint32_t y, uint8_t fg, uint8_t bg);
+void		kputchar(char c, uint8_t fg, uint8_t bg);
