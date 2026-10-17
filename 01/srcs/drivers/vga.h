@@ -1,3 +1,10 @@
+/*
+ * drivers/vga.h
+ * Driver VGA mode texte 80x25 (0xB8000).
+ * Couleurs, cellule = [couleur:8][char:8], curseur matériel (index y*80+x).
+ * Ne connaît pas les terminaux : c'est tty/ qui décide quoi afficher.
+ */
+
 #pragma once
 #include "../utils/stdint.h"
 
@@ -28,16 +35,13 @@ typedef enum __attribute__ ((__packed__)) e_vga_color {
 	WHITE = 15
 } vga_color_t;
 
-typedef struct cursor_pos_s {
-	uint32_t x;
-	uint32_t y;
-} cursor_pos_t;
-
-void set_cursor(int offset);
-int get_cursor();
-static inline uint8_t create_vga_color(uint8_t fg, uint8_t bg);
-static inline uint16_t create_vga_char(uint8_t c, uint8_t color);
-void clear_term();
-void	print_char_at(uint8_t c, uint32_t x, uint32_t y, uint8_t fg, uint8_t bg);
+void		set_cursor(int offset);
+void vga_set_cursor(uint32_t x, uint32_t y);
+int			get_cursor();
+uint8_t		vga_create_color(uint8_t fg, uint8_t bg);
+uint16_t	vga_create_char(uint8_t c, uint8_t color);
+uint8_t		vga_extract_color(uint16_t vga_elem);
+void		clear_term();
+void		print_char_at(uint8_t c, uint32_t x, uint32_t y, uint8_t fg, uint8_t bg);
 uint32_t	print_str_at(char* str, uint32_t x, uint32_t y, uint8_t fg, uint8_t bg);
 void		kputchar(char c, uint8_t fg, uint8_t bg);

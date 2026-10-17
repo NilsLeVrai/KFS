@@ -1,3 +1,9 @@
+/*
+ * cpu/idt.c
+ * Table des 256 gates + lidt.
+ * Chaque gate : segment code noyau 0x08, ring 0, interrupt gate 32 bits (0x8E).
+ */
+
 #include "idt.h"
 #include "isr.h"
 

@@ -1,3 +1,10 @@
+/*
+ * kernel/gdt.c
+ * Construit la GDT à GDT_BASE_ADDR :
+ * null, code/data/stack noyau (ring 0), code/data/stack user (ring 3).
+ * Charge GDTR et recharge les segments (CS=0x08, data=0x10).
+ */
+
 #include "./gdt.h"
 
 struct gdt_entry* gdt = (struct gdt_entry*)GDT_BASE_ADDR;

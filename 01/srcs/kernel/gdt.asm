@@ -1,3 +1,7 @@
+; kernel/gdt.asm
+; activate_segments : recharge DS..SS (0x10) et CS (far jump 0x08).
+; switch_to_user_mode (commenté) : passage en ring 3 via iret.
+
 global activate_segments
 activate_segments:
     ; Chargement des segments de données Kernel (Index 2 = 0x10)

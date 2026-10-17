@@ -1,3 +1,9 @@
+/*
+ * cpu/idt.h
+ * Types de l'IDT (gate, registre IDTR) et API de remplissage / chargement.
+ * Ne connaît aucun handler : c'est isr.c qui remplit la table.
+ */
+
 #pragma once
 #include "../utils/stdint.h"
 

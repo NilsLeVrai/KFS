@@ -1,3 +1,8 @@
+/*
+ * drivers/ports.c
+ * Implémentation in/out 8 bits en asm inline.
+ */
+
 #include "ports.h"
 
 unsigned char port_byte_in(unsigned short port) {

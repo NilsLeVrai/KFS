@@ -1,3 +1,8 @@
+/*
+ * utils/mem.c
+ * kmemcpy, kmemmove (gère le chevauchement), kmemset, kmemcmp, kmemchr.
+ */
+
 #include "mem.h"
 #include "stdint.h"
 

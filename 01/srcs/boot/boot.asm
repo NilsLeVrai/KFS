@@ -1,3 +1,8 @@
+; boot/boot.asm
+; Point d'entrée du noyau (_start).
+; Header Multiboot pour GRUB, pile de 16 Ko en .bss, puis call kernel_main.
+; GRUB nous laisse déjà en mode protégé 32 bits, interruptions coupées.
+
 ; Declare constants for the multiboot header.
 MBALIGN  equ  0           ; align loaded modules on page boundaries
 MEMINFO  equ  1            ; provide memory map

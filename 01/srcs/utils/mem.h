@@ -1,3 +1,8 @@
+/*
+ * utils/mem.h
+ * Équivalents freestanding de string.h (kmem*). Aucune dépendance.
+ */
+
 #pragma once
 #include "stdint.h"
 

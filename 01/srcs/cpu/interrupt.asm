@@ -1,3 +1,9 @@
+; cpu/interrupt.asm
+; Stubs bas niveau des interruptions.
+; isr0-31 = exceptions CPU, irq0-15 = matériel (remappé en vecteurs 32-47).
+; Chaque stub empile n° + code d'erreur, sauve les registres (registers_t)
+; puis appelle isr_handler / irq_handler côté C.
+
 [extern isr_handler]
 [extern irq_handler]
 

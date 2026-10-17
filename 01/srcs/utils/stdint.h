@@ -1,3 +1,9 @@
+/*
+ * utils/stdint.h
+ * Remplaçant de <stdint.h> pour -ffreestanding :
+ * entiers à taille fixe, limites, bool / TRUE / FALSE en macros.
+ */
+
 #ifndef _PORTABLE_STDINT_H_
 #define _PORTABLE_STDINT_H_
 
@@ -5,7 +11,7 @@
 /* 1. Types entiers à largeur exacte                                         */
 /* ========================================================================= */
 
-typedef signed char        int8_t;
+typedef char        int8_t;
 typedef short              int16_t;
 typedef int                int32_t;
 #if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
@@ -89,5 +95,9 @@ typedef uint64_t           uintmax_t;
 #define INTMAX_MIN       INT64_MIN
 #define INTMAX_MAX       INT64_MAX
 #define UINTMAX_MAX      UINT64_MAX
+
+#define bool			 char
+#define TRUE			 1
+#define FALSE			 0
 
 #endif /* _PORTABLE_STDINT_H_ */

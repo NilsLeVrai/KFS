@@ -1,3 +1,9 @@
+/*
+ * cpu/isr.h
+ * registers_t (état empilé par interrupt.asm), symboles des stubs,
+ * IRQ0-15 -> vecteurs 32-47, API d'enregistrement des handlers.
+ */
+
 #pragma once
 #include "../utils/stdint.h"
 

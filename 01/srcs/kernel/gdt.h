@@ -1,3 +1,8 @@
+/*
+ * kernel/gdt.h
+ * Structures GDT (entrée, GDTR) et setup_gdt.
+ */
+
 #pragma once
 #include "../utils/stdint.h"
 

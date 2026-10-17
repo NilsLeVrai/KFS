@@ -1,6 +1,14 @@
+/*
+ * cpu/isr.c
+ * Installation : gates 0-47 dans l'IDT + remap du PIC (IRQ -> 32-47).
+ * Dispatch : exceptions -> isr_handler ; IRQ -> handler enregistré via
+ * register_interrupt_handler, puis EOI au PIC.
+ * Les drivers s'y branchent sans que cpu/ ne les connaisse.
+ */
+
 #include "isr.h"
 #include "idt.h"
-#include "../drivers/display.h"
+#include "../drivers/vga.h"
 #include "../drivers/ports.h"
 
 isr_t interrupt_handlers[256];
