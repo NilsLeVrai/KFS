@@ -27,12 +27,8 @@ void kernel_main() {
 	kbd_init();
 
 	tty_init();
-	tty_write(tty_current(), "eulmanOs >> ", 0, 2, 3);
-	for (;;) {
-		static int8_t test[64];
-		kreadline(tty_current(), test, 64, "neumanOs >> ");
-		tty_write(tty_current(), "\n", 0, 0, 0);
-	}
+	shell_init();
+	shell_start();
 
 	// asm volatile ("int $00");
 	// switch_to_user_mode();

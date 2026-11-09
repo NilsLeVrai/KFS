@@ -1,0 +1,268 @@
+[
+ {
+  "directory": "/home/achatzit/42/KFS/01",
+  "arguments": [
+   "./utils/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+   "-c",
+   "srcs/kernel/gdt.c",
+   "-o",
+   "objs/kernel/gdt.o",
+   "-m32",
+   "-std=gnu99",
+   "-ffreestanding"
+  ],
+  "file": "srcs/kernel/gdt.c"
+ },
+ {
+  "directory": "/home/achatzit/42/KFS/01",
+  "arguments": [
+   "./utils/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+   "-c",
+   "srcs/kernel/kernel.c",
+   "-o",
+   "objs/kernel/kernel.o",
+   "-m32",
+   "-std=gnu99",
+   "-ffreestanding"
+  ],
+  "file": "srcs/kernel/kernel.c"
+ },
+ {
+  "directory": "/home/achatzit/42/KFS/01",
+  "arguments": [
+   "./utils/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+   "-c",
+   "srcs/drivers/ports.c",
+   "-o",
+   "objs/drivers/ports.o",
+   "-m32",
+   "-std=gnu99",
+   "-ffreestanding"
+  ],
+  "file": "srcs/drivers/ports.c"
+ },
+ {
+  "directory": "/home/achatzit/42/KFS/01",
+  "arguments": [
+   "./utils/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+   "-c",
+   "srcs/drivers/keyboard.c",
+   "-o",
+   "objs/drivers/keyboard.o",
+   "-m32",
+   "-std=gnu99",
+   "-ffreestanding"
+  ],
+  "file": "srcs/drivers/keyboard.c"
+ },
+ {
+  "directory": "/home/achatzit/42/KFS/01",
+  "arguments": [
+   "./utils/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+   "-c",
+   "srcs/drivers/vga.c",
+   "-o",
+   "objs/drivers/vga.o",
+   "-m32",
+   "-std=gnu99",
+   "-ffreestanding"
+  ],
+  "file": "srcs/drivers/vga.c"
+ },
+ {
+  "directory": "/home/achatzit/42/KFS/01",
+  "arguments": [
+   "./utils/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+   "-c",
+   "srcs/cpu/idt.c",
+   "-o",
+   "objs/cpu/idt.o",
+   "-m32",
+   "-std=gnu99",
+   "-ffreestanding"
+  ],
+  "file": "srcs/cpu/idt.c"
+ },
+ {
+  "directory": "/home/achatzit/42/KFS/01",
+  "arguments": [
+   "./utils/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+   "-c",
+   "srcs/cpu/isr.c",
+   "-o",
+   "objs/cpu/isr.o",
+   "-m32",
+   "-std=gnu99",
+   "-ffreestanding"
+  ],
+  "file": "srcs/cpu/isr.c"
+ },
+ {
+  "directory": "/home/achatzit/42/KFS/01",
+  "arguments": [
+   "./utils/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+   "-c",
+   "srcs/shell/shell.c",
+   "-o",
+   "objs/shell/shell.o",
+   "-m32",
+   "-std=gnu99",
+   "-ffreestanding"
+  ],
+  "file": "srcs/shell/shell.c"
+ },
+ {
+  "directory": "/home/achatzit/42/KFS/01",
+  "arguments": [
+   "./utils/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+   "-c",
+   "srcs/utils/circular_buffer.c",
+   "-o",
+   "objs/utils/circular_buffer.o",
+   "-m32",
+   "-std=gnu99",
+   "-ffreestanding"
+  ],
+  "file": "srcs/utils/circular_buffer.c"
+ },
+ {
+  "directory": "/home/achatzit/42/KFS/01",
+  "arguments": [
+   "./utils/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+   "-c",
+   "srcs/utils/mem.c",
+   "-o",
+   "objs/utils/mem.o",
+   "-m32",
+   "-std=gnu99",
+   "-ffreestanding"
+  ],
+  "file": "srcs/utils/mem.c"
+ },
+ {
+  "directory": "/home/achatzit/42/KFS/01",
+  "arguments": [
+   "./utils/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+   "-c",
+   "srcs/utils/kreadline.c",
+   "-o",
+   "objs/utils/kreadline.o",
+   "-m32",
+   "-std=gnu99",
+   "-ffreestanding"
+  ],
+  "file": "srcs/utils/kreadline.c"
+ },
+ {
+  "directory": "/home/achatzit/42/KFS/01",
+  "arguments": [
+   "./utils/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+   "-c",
+   "srcs/tty/tty_manager.c",
+   "-o",
+   "objs/tty/tty_manager.o",
+   "-m32",
+   "-std=gnu99",
+   "-ffreestanding"
+  ],
+  "file": "srcs/tty/tty_manager.c"
+ },
+ {
+  "directory": "/home/achatzit/42/KFS/01",
+  "arguments": [
+   "./utils/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+   "-c",
+   "srcs/tty/tty.c",
+   "-o",
+   "objs/tty/tty.o",
+   "-m32",
+   "-std=gnu99",
+   "-ffreestanding"
+  ],
+  "file": "srcs/tty/tty.c"
+ },
+ {
+  "directory": "/home/achatzit/42/KFS/01",
+  "arguments": [
+   "./utils/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+   "-c",
+   "srcs/utils/printk.c",
+   "-o",
+   "objs/utils/printk.o",
+   "-m32",
+   "-std=gnu99",
+   "-ffreestanding"
+  ],
+  "file": "srcs/utils/printk.c"
+ },
+ {
+  "directory": "/home/achatzit/42/KFS/01",
+  "arguments": [
+   "./utils/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+   "-c",
+   "srcs/utils/string.c",
+   "-o",
+   "objs/utils/string.o",
+   "-m32",
+   "-std=gnu99",
+   "-ffreestanding"
+  ],
+  "file": "srcs/utils/string.c"
+ },
+ {
+  "directory": "/home/achatzit/42/KFS/01",
+  "arguments": [
+   "./utils/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+   "-c",
+   "srcs/shell/builtins/bonjour42.c",
+   "-o",
+   "objs/shell/builtins/bonjour42.o",
+   "-m32",
+   "-std=gnu99",
+   "-ffreestanding"
+  ],
+  "file": "srcs/shell/builtins/bonjour42.c"
+ },
+ {
+  "directory": "/home/achatzit/42/KFS/01",
+  "arguments": [
+   "./utils/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+   "-c",
+   "srcs/shell/builtins/zeta.c",
+   "-o",
+   "objs/shell/builtins/zeta.o",
+   "-m32",
+   "-std=gnu99",
+   "-ffreestanding"
+  ],
+  "file": "srcs/shell/builtins/zeta.c"
+ },
+ {
+  "directory": "/home/achatzit/42/KFS/01",
+  "arguments": [
+   "./utils/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+   "-c",
+   "srcs/shell/builtins/reboot.c",
+   "-o",
+   "objs/shell/builtins/reboot.o",
+   "-m32",
+   "-std=gnu99",
+   "-ffreestanding"
+  ],
+  "file": "srcs/shell/builtins/reboot.c"
+ },
+ {
+  "directory": "/home/achatzit/42/KFS/01",
+  "arguments": [
+   "./utils/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+   "-c",
+   "srcs/shell/builtins/kshutdown.c",
+   "-o",
+   "objs/shell/builtins/kshutdown.o",
+   "-m32",
+   "-std=gnu99",
+   "-ffreestanding"
+  ],
+  "file": "srcs/shell/builtins/kshutdown.c"
+ }
+]

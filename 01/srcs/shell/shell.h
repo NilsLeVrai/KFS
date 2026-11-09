@@ -6,4 +6,5 @@
 #pragma once
 #include "../drivers/vga.h"
 
-void	init_shell();
+void	shell_init();
+void	shell_start();

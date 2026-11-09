@@ -18,7 +18,7 @@ typedef struct tty_s {
 	uint8_t		fg_color_default;
 } tty_t;
 
-void	tty_putchar(tty_t* t, int8_t c, bool custom_color, uint8_t fg, uint8_t bg);
-void	tty_write(tty_t* t, const int8_t* s, bool custom_color, uint16_t fg, uint8_t bg);
+int32_t	tty_putchar(tty_t* t, int8_t c, bool custom_color, uint8_t fg, uint8_t bg);
+int32_t	tty_write(tty_t* t, const int8_t* s, bool custom_color, uint16_t fg, uint8_t bg);
 void	tty_clear(tty_t* t);
 void	tty_backspace(tty_t* t);

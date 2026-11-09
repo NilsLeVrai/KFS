@@ -40,27 +40,33 @@ static void	tty_sync_cursor(tty_t* t) {
 	}
 }
 
-void	tty_putchar(tty_t* t, int8_t c, bool custom_color, uint8_t fg, uint8_t bg) {
+int32_t	tty_putchar(tty_t* t, int8_t c, bool custom_color, uint8_t fg, uint8_t bg) {
+	int32_t	cnt = 0;
+
 	if (c == '\n') {
 		t->x = 0;
 		t->y++;
 	} else {
 		tty_set_cell(t, t->x, t->y, vga_create_char(c, vga_create_color((custom_color ? fg : t->fg_color_default), (custom_color ? bg : t->bg_color_default))));
+		cnt++;
 		if (++t->x + 1 >= VGA_COL) {
 			t->x = 0;
 			t->y++;
 		}
 		tty_sync_cursor(t);
 	}
+	return (cnt);
 }
 
-void	tty_write(tty_t* t, const int8_t* s, bool custom_color, uint16_t fg, uint8_t bg) {
+int32_t	tty_write(tty_t* t, const int8_t* s, bool custom_color, uint16_t fg, uint8_t bg) {
+	int32_t cnt = 0;
 	while (*s) {
-		tty_putchar(t, *s++, custom_color, fg, bg);
+		cnt += tty_putchar(t, *s++, custom_color, fg, bg);
 	}
 	if (t == tty_current()) {
 		vga_set_cursor(t->x, t->y);
 	}
+	return (cnt);
 }
 
 void	tty_backspace(tty_t* t) {

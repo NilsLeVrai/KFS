@@ -48,7 +48,7 @@ void*	kmemset(void*	s, int32_t c, uint32_t n)
 	return (s);
 }
 
-int	kmemcmp(const void *s1, const void *s2, uint32_t n)
+uint32_t	kmemcmp(const void *s1, const void *s2, uint32_t n)
 {
     const uint8_t *a = s1;
     const uint8_t *b = s2;

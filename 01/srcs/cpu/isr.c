@@ -120,7 +120,8 @@ char *exception_messages[] = {
 
 void	isr_handler(registers_t* r) {
 	clear_term();
-	print_str_at("hahahahahahah", 0, 0, 2, 3);
+	print_str_at(exception_messages[r->int_no], 0, 0, 1, 2);
+	for (;;) asm volatile("hlt");
 }
 
 void register_interrupt_handler(uint8_t n, isr_t handler) {

@@ -9,6 +9,7 @@
 
 int8_t*	kreadline(tty_t* t, int8_t *out, uint32_t max, const int8_t* prompt) {
 	uint32_t idx = 0;
+	tty_write(t, prompt, 0, 0, 0);
 	for (;;) {
 		int8_t c = kbd_getchar();
 		if (c == '\n') {
