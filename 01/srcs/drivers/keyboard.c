@@ -46,6 +46,7 @@ static int32_t	decode(uint8_t sc) {
     switch (sc) {
         case 0x2A: case 0x36: shift = 1; return (-1);  // shift press
         case 0xAA: case 0xB6: shift = 0; return (-1);  // shift release
+        //case 0x1D: shift = 1; return 
     }
     if (sc & 0x80) return (-1);                        // autres releases
     int8_t c = shift ? map_shift[sc] : map[sc];

@@ -11,7 +11,7 @@
 #include "../utils/printk.h"
 #include "builtins/builtins.h"
 
-#define BUILTINS_NB 3
+#define BUILTINS_NB 4
 #define BUILTINS_NAME_MAX 32
 
 typedef struct builtins_s {
@@ -28,6 +28,8 @@ void	shell_init() {
 	builtins[1].adress = &kreboot;
 	kstrcpy(builtins[2].str, "shutdown");
 	builtins[2].adress = &kshutdown;
+	kstrcpy(builtins[3].str, "poppy");
+	builtins[3].adress = &kpoppy;
 }
 
 void	shell_start() {
