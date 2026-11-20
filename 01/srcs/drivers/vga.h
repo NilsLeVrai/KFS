@@ -35,13 +35,10 @@ typedef enum __attribute__ ((__packed__)) e_vga_color {
 	WHITE = 15
 } vga_color_t;
 
-void		set_cursor(int offset);
-void vga_set_cursor(uint32_t x, uint32_t y);
-int			get_cursor();
+void		vga_set_cursor(uint32_t x, uint32_t y);
 uint8_t		vga_create_color(uint8_t fg, uint8_t bg);
 uint16_t	vga_create_char(uint8_t c, uint8_t color);
-uint8_t		vga_extract_color(uint16_t vga_elem);
+
+// Écriture directe en VGA, hors tty : réservée au panic (isr_handler).
 void		clear_term();
-void		print_char_at(uint8_t c, uint32_t x, uint32_t y, uint8_t fg, uint8_t bg);
 uint32_t	print_str_at(char* str, uint32_t x, uint32_t y, uint8_t fg, uint8_t bg);
-void		kputchar(char c, uint8_t fg, uint8_t bg);

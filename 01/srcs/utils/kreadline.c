@@ -6,29 +6,29 @@
 
 #include "kreadline.h"
 #include "stdint.h"
+#include "../tty/tty_manager.h"
 
-int8_t*	kreadline(tty_t* t, int8_t *out, uint32_t max, const int8_t* prompt) {
-	uint32_t idx = 0;
-	tty_write(t, prompt, 0, 0, 0);
+int8_t*	kreadline(int8_t *out, uint32_t max) {
 	for (;;) {
 		int8_t c = kbd_getchar();
+		tty_t *t = tty_current();
+
 		if (c == '\n') {
-			out[idx] = 0;
+			kmemcpy(out, t->line, t->line_len);
+			out[t->line_len] = 0;
+			t->line_len = 0;
 			return (out);
-		} else if (c == '\b') {
-			if (idx > 0) {
+		}
+		if (c == '\b') {
+			if (t->line_len > 0) {
 				tty_backspace(t);
-				idx--;
+				t->line_len--;
 			}
 			continue ;
 		}
-		tty_putchar(t, c, 0, 0, 0);
-		out[idx] = c;
-		if (idx == max - 1) {
-			out[idx + 1] = 0;
-			return (out);
+		if (t->line_len < max - 1 && t->line_len < TTY_LINE_MAX - 1) {
+			t->line[t->line_len++] = c;
+			tty_putchar(t, c, 0, 0, 0);
 		}
-		idx++;
 	}
-	return (0);
 }

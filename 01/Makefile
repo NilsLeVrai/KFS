@@ -14,7 +14,7 @@ KVM		:= kvm
 
 # Flags
 NASMFLAGS	:= -f elf32
-CFLAGS		:= -m32 -std=gnu99 -ffreestanding
+CFLAGS		:= -m32 -std=gnu99 -ffreestanding -MMD -MP
 LDFLAGS		:= -T linker.ld -m32 -ffreestanding -nostdlib
 
 # Find all sources recursively
@@ -78,8 +78,7 @@ run: $(ISO)
 # --------------------------------------------------
 
 clean:
-	rm -rf $(OBJ_DIR)/*.o
-	find $(OBJ_DIR) -type d -empty -delete
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)
@@ -87,3 +86,5 @@ fclean: clean
 	rm -f $(ISO_DIR)/boot/$(NAME)
 
 re: fclean all
+
+-include $(C_OBJS:.o=.d)

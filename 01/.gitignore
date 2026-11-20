@@ -1,0 +1,29 @@
+# Build artifacts
+objs/
+*.o
+*.d
+*.a
+*.elf
+*.bin
+*.iso
+myos
+isodir/boot/myos
+
+# clangd / editor
+.cache/
+compile_commands.json
+.clangd
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Debug / emulator
+*.log
+qemu.log
+core
+vgcore.*
+
+# OS
+.DS_Store

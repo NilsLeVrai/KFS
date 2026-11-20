@@ -5,16 +5,13 @@
  * puis boucle prompt / kreadline.
  */
 
-#include "../drivers/vga.h"
 #include "../cpu/isr.h"
 #include "../cpu/timer.h"
 #include "./gdt.h"
 #include "../shell/shell.h"
 #include "../drivers/ports.h"
 #include "../drivers/keyboard.h"
-#include "../utils/kreadline.h"
 #include "../tty/tty_manager.h"
-#include "../tty/tty.h"
 #include "../utils/printk.h"
 
 void user_test() {
@@ -31,6 +28,10 @@ void kernel_main() {
 
 	tty_init();
 	shell_init();
+	kbd_register_shortcut(KBD_MOD_SHIFT, KEY_RIGHT, tty_next);
+	kbd_register_shortcut(KBD_MOD_SHIFT, KEY_LEFT, tty_prev);
+	kbd_register_shortcut(0, KEY_PGUP, tty_page_up);
+	kbd_register_shortcut(0, KEY_PGDOWN, tty_page_down);
 	shell_start();
 
 

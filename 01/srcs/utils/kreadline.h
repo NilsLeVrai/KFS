@@ -9,4 +9,4 @@
 #include "../drivers/keyboard.h"
 #include "../tty/tty.h"
 
-int8_t*	kreadline(tty_t* t,int8_t *out, uint32_t max, const int8_t* prompt);
+int8_t*	kreadline(int8_t *out, uint32_t max);
