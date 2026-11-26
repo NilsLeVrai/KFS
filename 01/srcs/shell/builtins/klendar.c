@@ -11,7 +11,7 @@ static inline void port_byte_out_int(unsigned short port, unsigned char data) {
 }
 
 static unsigned char bcd_to_bin(unsigned char value) {
-    unsigned char ret = ( (value & 0xF0) >> 1) + ( (value & 0xF0) >> 3) + (value & 0xf);
+    unsigned char ret = ( (value & 0xF0) >> 1) + ( (value & 0xF0) >> 3) + (value & 0xf); //osdev
     return ret;
 }
 
