@@ -42,11 +42,13 @@ static int32_t	put_signed(tty_t *t, int32_t n) {
  * %p    : pointeur (0x + 8 chiffres hexa)
  * %s %c %%
  * flag '#' : prefixe 0x / 0X pour %x %X, 0b pour %b
+ * largeur  : %08x, %02x, %5u... complete avec des '0' (u x X b), max 32
  */
 uint32_t	printk(tty_t *t, const int8_t* f, ...) {
 	va_list	args;
 	int32_t	cnt = 0;
 	bool	alt;
+	int32_t	width;
 
 	va_start(args, f);
 
@@ -59,24 +61,29 @@ uint32_t	printk(tty_t *t, const int8_t* f, ...) {
 		alt = FALSE;
 		if (*f == '#')
 			alt = TRUE, f++;
+		width = 0;
+		while (*f >= '0' && *f <= '9')
+			width = width * 10 + (*f++ - '0');
+		if (width > 32)
+			width = 32; // buf de put_unsigned
 		switch (*f) {
 			case 'd':
 			case 'i':
 				cnt += put_signed(t, va_arg(args, int32_t));
 				break;
 			case 'u':
-				cnt += put_unsigned(t, va_arg(args, uint32_t), 10, FALSE, 0);
+				cnt += put_unsigned(t, va_arg(args, uint32_t), 10, FALSE, width);
 				break;
 			case 'x':
 			case 'X':
 				if (alt)
 					cnt += tty_write(t, *f == 'X' ? "0X" : "0x", 0, 0, 0);
-				cnt += put_unsigned(t, va_arg(args, uint32_t), 16, *f == 'X', 0);
+				cnt += put_unsigned(t, va_arg(args, uint32_t), 16, *f == 'X', width);
 				break;
 			case 'b':
 				if (alt)
 					cnt += tty_write(t, "0b", 0, 0, 0);
-				cnt += put_unsigned(t, va_arg(args, uint32_t), 2, FALSE, 0);
+				cnt += put_unsigned(t, va_arg(args, uint32_t), 2, FALSE, width);
 				break;
 			case 'p':
 				cnt += tty_write(t, "0x", 0, 0, 0);

@@ -32,6 +32,10 @@ align 4
 ; System V ABI standard and de-facto extensions. The compiler will assume the
 ; stack is properly aligned and failure to align the stack will result in
 ; undefined behavior.
+
+global stack_top
+global stack_bottom
+
 section .bss
 align 16
 stack_bottom:
@@ -78,6 +82,7 @@ _start:
 	; preserved and the call is well defined.
         ; note, that if you are building on Windows, C functions may have "_" prefix in assembly: _kernel_main
 	extern kernel_main
+	xor ebp, ebp		; ebp = 0 : marque la fin de la chaine des frames (backtrace)
 	call kernel_main
 
 	; If the system has nothing more to do, put the computer into an

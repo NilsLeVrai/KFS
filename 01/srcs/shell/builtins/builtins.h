@@ -10,3 +10,4 @@ void	zeta(const uint32_t nb);
 void	kreboot();
 void	kshutdown();
 void    kpoppy();
+void    kdump();
