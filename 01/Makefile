@@ -8,9 +8,17 @@ ISO_DIR		:= isodir
 
 # Tools
 NASM		:= nasm
+UNAME_S		:= $(shell uname -s)
+
+ifeq ($(UNAME_S),Darwin)
+CC		:= i686-elf-gcc
+GRUB		:= i686-elf-grub-mkrescue
+KVM		:= qemu-system-i386 -cdrom
+else
 CC		:= ./utils/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc
 GRUB		:= grub-mkrescue
 KVM		:= kvm
+endif
 
 # Flags
 NASMFLAGS	:= -f elf32

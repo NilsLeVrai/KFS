@@ -1,0 +1,23 @@
+# Build artifacts
+*.o
+*.a
+*.elf
+*.bin
+*.iso
+01/myos
+01/isodir/boot/myos
+01/objs/
+
+# clangd / editor
+.cache/
+compile_commands.json
+.vscode/
+.idea/
+*.swp
+*~
+
+# macOS
+.DS_Store
+
+# QEMU / debug
+*.log

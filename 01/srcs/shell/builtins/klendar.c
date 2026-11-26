@@ -62,5 +62,7 @@ void klendar() {
     port_byte_out_int(0x70, 0x09);
     year = get_year(port_byte_in_int(0x71));
 
-    printk(tty_current(), "%s %02x %s %d %02x:%02x:%02x UTC\n", weekday, day, month, year, hours + 1, minutes, seconds);
+    hours = (bcd_to_bin(hours) + 1) % 24;
+
+    printk(tty_current(), "%s %02x %s %d %02u:%02x:%02x UTC+1\n", weekday, day, month, year, hours, minutes, seconds);
 }
