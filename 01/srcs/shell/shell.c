@@ -32,7 +32,7 @@ void	shell_init() {
 	builtins[3].adress = &kpoppy;
 	kstrcpy(builtins[4].str, "kdump");
 	builtins[4].adress = &kdump;
-	kstrcpy(builtins[5].str, "kk"); //pas peu fier
+	kstrcpy(builtins[5].str, "klendar"); //pas peu fier
 	builtins[5].adress = &klendar;
 
 }
