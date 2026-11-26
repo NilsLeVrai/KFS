@@ -1,13 +1,11 @@
 #include "builtins.h"
 
-/*
-chopper le terminal
-verifier si on peut afficher le caractere
-faire la boucle principal
-*/
-
 extern uint8_t stack_top[];
 extern uint8_t stack_bottom[];
+
+static int printk_is_printable(uint8_t tmp) {
+    return (tmp > 31 && tmp < 127 ? 1 : 0);
+}
 
 static void printk_kernel_stack(tty_t *t, uint32_t esp, uint32_t ebp) {
 
@@ -46,11 +44,25 @@ static void printk_backtrace(tty_t *t, uint32_t ebp) {
 
 static void printk_stack(tty_t *t, uint32_t esp) {
     
-   // uint32_t tmp;
-    (void)esp;
+    uint32_t    *tmp;
+    uint8_t     *c;
+
+    tmp = (uint32_t*)(esp & ~0xF);
     printk(t, "-- stack (esp --> top) --\n");
-    //tmp = esp;
-    //for (i in range)
+    while (tmp < (uint32_t*)stack_top) {
+
+        printk(t, "%p  %08x %08x %08x %08x  ", tmp, tmp[0], tmp[1], tmp[2], tmp[3]);
+        c = (uint8_t*)tmp;
+        for (int i = 0; i < 16; i++) {
+            if (printk_is_printable(c[i]) == 1) {
+                printk(t, "%c", c[i]);
+            } else {
+                printk(t, ".");
+            }
+        }
+        printk(t, "\n");
+        tmp += 4;
+    }
 }
 
 void	kdump() {
