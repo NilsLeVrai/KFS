@@ -11,3 +11,4 @@ void	kreboot();
 void	kshutdown();
 void    kpoppy();
 void    kdump();
+void    klendar();
