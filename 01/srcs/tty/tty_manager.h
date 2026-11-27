@@ -8,7 +8,7 @@
 
 #define	TERMINAL_NB 1
 
-tty_t			terms[TERMINAL_NB];
+extern tty_t	terms[TERMINAL_NB];
 static uint8_t	current_term_id = 0;
 
 void	tty_init();

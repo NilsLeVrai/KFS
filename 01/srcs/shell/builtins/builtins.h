@@ -12,3 +12,15 @@ void	kshutdown();
 void    kpoppy();
 void    kdump();
 void    klendar();
+
+typedef struct time_s {
+
+	const char		*month;
+	const char		*weekday;
+	unsigned int	year;
+	unsigned char	seconds;
+	unsigned char	minutes;
+	unsigned char	hours;
+	unsigned char	day;
+
+}	time_t;

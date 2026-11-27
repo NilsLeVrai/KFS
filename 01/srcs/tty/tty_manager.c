@@ -7,6 +7,8 @@
 #include "tty_manager.h"
 #include "../utils/mem.h"
 
+tty_t	terms[TERMINAL_NB];
+
 void	tty_init() {
 	terms[0].bg_color_default = 0;
 	terms[0].fg_color_default = 1;
